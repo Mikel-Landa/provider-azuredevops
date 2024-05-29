@@ -1,0 +1,12 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: crossplane-xpkg-provider-azuredevops
+spec:
+  ignoreCrossplaneConstraints: false
+  package: acrpepperhorizon.azurecr.io/crossplane/xpkg/provider-azuredevops:v0.0.1
+  packagePullPolicy: IfNotPresent
+  revisionActivationPolicy: Automatic
+  revisionHistoryLimit: 0
+  skipDependencyResolution: false
+ 
