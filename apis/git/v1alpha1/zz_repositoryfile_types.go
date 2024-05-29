@@ -39,10 +39,6 @@ type RepositoryFileInitParameters struct {
 	// Enable overwriting existing files (defaults to false).
 	// Enable overwriting existing files, defaults to "false"
 	OverwriteOnCreate *bool `json:"overwriteOnCreate,omitempty" tf:"overwrite_on_create,omitempty"`
-
-	// The ID of the Git repository.
-	// The repository ID
-	RepositoryID *string `json:"repositoryId,omitempty" tf:"repository_id,omitempty"`
 }
 
 type RepositoryFileObservation struct {
@@ -105,8 +101,17 @@ type RepositoryFileParameters struct {
 
 	// The ID of the Git repository.
 	// The repository ID
+	// +crossplane:generate:reference:type=github.com/Mikel-Landa/provider-azuredevops/apis/git/v1alpha1.Repository
 	// +kubebuilder:validation:Optional
 	RepositoryID *string `json:"repositoryId,omitempty" tf:"repository_id,omitempty"`
+
+	// Reference to a Repository in git to populate repositoryId.
+	// +kubebuilder:validation:Optional
+	RepositoryIDRef *v1.Reference `json:"repositoryIdRef,omitempty" tf:"-"`
+
+	// Selector for a Repository in git to populate repositoryId.
+	// +kubebuilder:validation:Optional
+	RepositoryIDSelector *v1.Selector `json:"repositoryIdSelector,omitempty" tf:"-"`
 }
 
 // RepositoryFileSpec defines the desired state of RepositoryFile
@@ -146,7 +151,6 @@ type RepositoryFile struct {
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.content) || (has(self.initProvider) && has(self.initProvider.content))",message="spec.forProvider.content is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.file) || (has(self.initProvider) && has(self.initProvider.file))",message="spec.forProvider.file is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.repositoryId) || (has(self.initProvider) && has(self.initProvider.repositoryId))",message="spec.forProvider.repositoryId is a required parameter"
 	Spec   RepositoryFileSpec   `json:"spec"`
 	Status RepositoryFileStatus `json:"status,omitempty"`
 }

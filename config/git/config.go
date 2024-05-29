@@ -11,7 +11,7 @@ func Configure(p *config.Provider) {
 		// object, we can build cross resource referencing. See
 		// repositoryRef in the example in the Testing section below.
 		r.References["project_id"] = config.Reference{
-			Type: "github.com/Mikel-Landa/provider-azuredevops/apis/project/v1alpha1.Project",
+			Type: "github.com/Mikel-Landa/provider-azuredevops/apis/azuredevops/v1alpha1.Project",
 		}
 	})
 
@@ -21,8 +21,8 @@ func Configure(p *config.Provider) {
 		// as an input. And by defining it as a reference to Repository
 		// object, we can build cross resource referencing. See
 		// repositoryRef in the example in the Testing section below.
-		r.References["project_id"] = config.Reference{
-			Type: "github.com/Mikel-Landa/provider-azuredevops/apis/azuredevops/v1alpha1.Repository",
+		r.References["repository_id"] = config.Reference{
+			Type: "github.com/Mikel-Landa/provider-azuredevops/apis/git/v1alpha1.Repository",
 		}
 	})
 

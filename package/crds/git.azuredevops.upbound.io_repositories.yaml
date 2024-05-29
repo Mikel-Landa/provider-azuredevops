@@ -104,7 +104,8 @@ spec:
                     description: The project ID or project name.
                     type: string
                   projectIdRef:
-                    description: Reference to a Project in project to populate projectId.
+                    description: Reference to a Project in azuredevops to populate
+                      projectId.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -138,7 +139,8 @@ spec:
                     - name
                     type: object
                   projectIdSelector:
-                    description: Selector for a Project in project to populate projectId.
+                    description: Selector for a Project in azuredevops to populate
+                      projectId.
                     properties:
                       matchControllerRef:
                         description: MatchControllerRef ensures an object with the

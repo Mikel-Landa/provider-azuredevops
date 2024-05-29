@@ -142,15 +142,15 @@ type RepositoryParameters struct {
 	ParentRepositoryID *string `json:"parentRepositoryId,omitempty" tf:"parent_repository_id,omitempty"`
 
 	// The project ID or project name.
-	// +crossplane:generate:reference:type=github.com/Mikel-Landa/provider-azuredevops/apis/project/v1alpha1.Project
+	// +crossplane:generate:reference:type=github.com/Mikel-Landa/provider-azuredevops/apis/azuredevops/v1alpha1.Project
 	// +kubebuilder:validation:Optional
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
 
-	// Reference to a Project in project to populate projectId.
+	// Reference to a Project in azuredevops to populate projectId.
 	// +kubebuilder:validation:Optional
 	ProjectIDRef *v1.Reference `json:"projectIdRef,omitempty" tf:"-"`
 
-	// Selector for a Project in project to populate projectId.
+	// Selector for a Project in azuredevops to populate projectId.
 	// +kubebuilder:validation:Optional
 	ProjectIDSelector *v1.Selector `json:"projectIdSelector,omitempty" tf:"-"`
 }

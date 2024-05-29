@@ -13,7 +13,9 @@ spec:
     content: '**/*.tfstate'
     file: .gitignore
     overwriteOnCreate: false
-    repositoryId: ${azuredevops_git_repository.example.id}
+    repositoryIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
 
 ---
 
