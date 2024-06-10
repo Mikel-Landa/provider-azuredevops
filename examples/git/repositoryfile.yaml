@@ -3,6 +3,7 @@ kind: RepositoryFile
 metadata:
   annotations:
     meta.upbound.io/example-id: git/v1alpha1/repositoryfile
+    crossplane.io/external-name: d1/d2/.gitignore
   labels:
     testing.upbound.io/example-name: example
   name: example
@@ -11,7 +12,6 @@ spec:
     branch: refs/heads/master
     commitMessage: First commit
     content: '**/*.tfstate'
-    file: .gitignore
     overwriteOnCreate: false
     repositoryIdSelector:
       matchLabels:

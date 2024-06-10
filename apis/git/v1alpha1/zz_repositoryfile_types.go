@@ -19,11 +19,6 @@ import (
 
 type RepositoryFileInitParameters struct {
 
-	// Git branch (defaults to refs/heads/master). The branch must already exist, it will not be created if it
-	// does not already exist.
-	// The branch name, defaults to "refs/heads/master"
-	Branch *string `json:"branch,omitempty" tf:"branch,omitempty"`
-
 	// Commit message when adding or updating the managed file.
 	// The commit message when creating or updating the file
 	CommitMessage *string `json:"commitMessage,omitempty" tf:"commit_message,omitempty"`
@@ -31,10 +26,6 @@ type RepositoryFileInitParameters struct {
 	// The file content.
 	// The file's content
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
-
-	// The path of the file to manage.
-	// The file path to manage
-	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
 	// Enable overwriting existing files (defaults to false).
 	// Enable overwriting existing files, defaults to "false"
@@ -55,10 +46,6 @@ type RepositoryFileObservation struct {
 	// The file content.
 	// The file's content
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
-
-	// The path of the file to manage.
-	// The file path to manage
-	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -88,11 +75,6 @@ type RepositoryFileParameters struct {
 	// The file's content
 	// +kubebuilder:validation:Optional
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
-
-	// The path of the file to manage.
-	// The file path to manage
-	// +kubebuilder:validation:Optional
-	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
 	// Enable overwriting existing files (defaults to false).
 	// Enable overwriting existing files, defaults to "false"
@@ -150,7 +132,6 @@ type RepositoryFile struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.content) || (has(self.initProvider) && has(self.initProvider.content))",message="spec.forProvider.content is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.file) || (has(self.initProvider) && has(self.initProvider.file))",message="spec.forProvider.file is a required parameter"
 	Spec   RepositoryFileSpec   `json:"spec"`
 	Status RepositoryFileStatus `json:"status,omitempty"`
 }
