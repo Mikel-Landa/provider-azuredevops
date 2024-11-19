@@ -13,8 +13,8 @@ import (
 var ExternalNameConfigs = map[string]config.ExternalName{
 	// Import requires using a randomly generated ID from provider: nl-2e21sda
 	"azuredevops_project":             config.IdentifierFromProvider,
-	"azuredevops_git_repository":      config.TemplatedStringAsIdentifier("file", "{{ .parameters.project_id }}/{{ .external_name }}"),
-	"azuredevops_git_repository_file": config.TemplatedStringAsIdentifier("file", "{{ .parameters.repository_id }}/{{ .external_name }}:{{ .parameters.branch }}"),
+	"azuredevops_git_repository":      config.TemplatedStringAsIdentifier("", "{{ .parameters.project_id }}/{{ .external_name }}"),
+	"azuredevops_git_repository_file": config.TemplatedStringAsIdentifier("file", "{{ .parameters.repository_id }}/{{ .external_name }}"),
 }
 
 // func gitRepositoryFileIDConf() config.ExternalName {
