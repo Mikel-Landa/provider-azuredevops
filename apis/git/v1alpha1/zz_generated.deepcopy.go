@@ -190,6 +190,11 @@ func (in *RepositoryFileInitParameters) DeepCopyInto(out *RepositoryFileInitPara
 		*out = new(string)
 		**out = **in
 	}
+	if in.File != nil {
+		in, out := &in.File, &out.File
+		*out = new(string)
+		**out = **in
+	}
 	if in.OverwriteOnCreate != nil {
 		in, out := &in.OverwriteOnCreate, &out.OverwriteOnCreate
 		*out = new(bool)
@@ -257,6 +262,11 @@ func (in *RepositoryFileObservation) DeepCopyInto(out *RepositoryFileObservation
 		*out = new(string)
 		**out = **in
 	}
+	if in.File != nil {
+		in, out := &in.File, &out.File
+		*out = new(string)
+		**out = **in
+	}
 	if in.ID != nil {
 		in, out := &in.ID, &out.ID
 		*out = new(string)
@@ -299,6 +309,11 @@ func (in *RepositoryFileParameters) DeepCopyInto(out *RepositoryFileParameters) 
 	}
 	if in.Content != nil {
 		in, out := &in.Content, &out.Content
+		*out = new(string)
+		**out = **in
+	}
+	if in.File != nil {
+		in, out := &in.File, &out.File
 		*out = new(string)
 		**out = **in
 	}

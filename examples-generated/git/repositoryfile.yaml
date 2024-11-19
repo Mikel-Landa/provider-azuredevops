@@ -11,6 +11,7 @@ spec:
     branch: refs/heads/master
     commitMessage: First commit
     content: '**/*.tfstate'
+    file: .gitignore
     overwriteOnCreate: false
     repositoryIdSelector:
       matchLabels:
