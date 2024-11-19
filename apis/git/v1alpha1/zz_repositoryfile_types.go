@@ -19,6 +19,11 @@ import (
 
 type RepositoryFileInitParameters struct {
 
+	// Git branch (defaults to refs/heads/master). The branch must already exist, it will not be created if it
+	// does not already exist.
+	// The branch name, defaults to "refs/heads/master"
+	Branch *string `json:"branch,omitempty" tf:"branch,omitempty"`
+
 	// Commit message when adding or updating the managed file.
 	// The commit message when creating or updating the file
 	CommitMessage *string `json:"commitMessage,omitempty" tf:"commit_message,omitempty"`

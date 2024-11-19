@@ -172,6 +172,11 @@ spec:
                   for example because of an external controller is managing them,
                   like an autoscaler.
                 properties:
+                  branch:
+                    description: Git branch (defaults to refs/heads/master). The branch
+                      must already exist, it will not be created if it does not already
+                      exist. The branch name, defaults to "refs/heads/master"
+                    type: string
                   commitMessage:
                     description: Commit message when adding or updating the managed
                       file. The commit message when creating or updating the file
